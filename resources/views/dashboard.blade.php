@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <h1>DASHBOARD</h1>
+
+    <div class="p-6 w-full max-w-2xl text-center bg-white rounded-lg shadow-lg">
+        <div class="container">
+            @if (session('success'))
+                <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
+                    <button class="float-right text-green-700"
+                        onclick="this.parentElement.style.display='none'">&times;</button>
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
+        <h1 class="mb-4 text-3xl font-bold text-gray-800">Welcome to Your Dashboard, {{ Auth::user()->name }}!</h1>
+        <p class="mb-6 text-gray-600">
+            We're glad to have you back. Explore your account or log out when you're done.
+        </p>
+
+        <div class="flex gap-4 justify-center mb-4">
+            @if (Auth::user()->profile)
+                <div class="p-6 text-left bg-white rounded-lg shadow-md">
+                    <h3 class="mb-4 text-lg font-semibold text-gray-800">Profile Information</h3>
+                    <div class="space-y-3">
+                        <p class="text-gray-700"><span class="font-medium text-gray-900">Id:</span>
+                            {{ Auth::id() }}</p>
+                        <p class="text-gray-700"><span class="font-medium text-gray-900">Address:</span>
+                            {{ Auth::user()->profile->address }}</p>
+                        <p class="text-gray-700"><span class="font-medium text-gray-900">Position:</span>
+                            {{ Auth::user()->profile->position }}</p>
+                        <p class="text-gray-700"><span class="font-medium text-gray-900">Phone:</span>
+                            {{ Auth::user()->profile->phone }}</p>
+                    </div>
+                </div>
+            @else
+                <a href="{{ route('profile.create') }}"
+                    class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    Create Profile
+                </a>
+            @endif
+        </div>
+    </div>
+</body>
+</html>
