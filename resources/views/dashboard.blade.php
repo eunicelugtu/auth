@@ -41,13 +41,12 @@
                             {{ Auth::user()->profile->contact_number }}</p>
                     </div>
                 </div>
+            @else
+                <a href="{{route('profileForm')}}">
+                    Create Profile
+                </a>
             @endif
         </div>
-
-        <form action="{{route('profileForm')}}" method="GET">
-            @method('GET')
-            <button type="submit">Create Profile</button>
-        </form>
 
         <form action="{{route('logout')}}" method="POST">
             @method('POST')
