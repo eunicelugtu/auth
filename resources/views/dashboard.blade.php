@@ -31,16 +31,29 @@
                     <div class="space-y-3">
                         <p class="text-gray-700"><span class="font-medium text-gray-900">Id:</span>
                             {{ Auth::id() }}</p>
-                        <p class="text-gray-700"><span class="font-medium text-gray-900">Address:</span>
-                            {{ Auth::user()->profile->address }}</p>
-                        <p class="text-gray-700"><span class="font-medium text-gray-900">Position:</span>
-                            {{ Auth::user()->profile->position }}</p>
-                        <p class="text-gray-700"><span class="font-medium text-gray-900">Phone:</span>
-                            {{ Auth::user()->profile->phone }}</p>
+                        <p class="text-gray-700"><span class="font-medium text-gray-900">Email:</span>
+                            {{ Auth::user()->email }}</p>
+                        <p class="text-gray-700"><span class="font-medium text-gray-900">Birthday:</span>
+                            {{ Auth::user()->profile->birthday }}</p>
+                        <p class="text-gray-700"><span class="font-medium text-gray-900">Bio:</span>
+                            {{ Auth::user()->profile->bio }}</p>
+                        <p class="text-gray-700"><span class="font-medium text-gray-900">Contact Number:</span>
+                            {{ Auth::user()->profile->contact_number }}</p>
                     </div>
                 </div>
             @endif
         </div>
+
+        <form action="{{route('profileForm')}}" method="GET">
+            @method('GET')
+            <button type="submit">Create Profile</button>
+        </form>
+
+        <form action="{{route('logout')}}" method="POST">
+            @method('POST')
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
     </div>
 </body>
 </html>

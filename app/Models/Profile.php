@@ -8,11 +8,11 @@ class Profile extends Model
 {
     //
     protected $fillable = [
+        'user_id',
         'birthday',
         'contact_number',
         'bio'
     ];
-    protected $guarded = ['user_id'];
 
     public function user(){
         return $this->belongsTo(User::class);

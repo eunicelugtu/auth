@@ -18,7 +18,7 @@ class AuthController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
+            'email' => 'required|string|email|unique:users|max:255',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'sometimes|string|in:user,admin'
         ]);
@@ -76,5 +76,13 @@ class AuthController extends Controller
     public function dashboard()
     {
         return view('dashboard');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('loginForm')
+            ->with('success', 'You have been logged out successfully.');
     }
 }
