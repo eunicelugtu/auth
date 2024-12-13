@@ -36,7 +36,7 @@
                         </div>
                 </div>
             @else
-                <a href="{{route('profileForm')}}" class="mx-auto w-24 px-1 py-2 text-sm font-medium text-white rounded-md shadow-sm bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500">
+                <a href="{{route('profileForm')}}" class="mx-auto w-24 px-1 py-2 text-sm font-medium text-white rounded-md shadow-sm bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500">
                     
                     Create Profile
                 </a>
